@@ -1,0 +1,23 @@
+*** Settings ***
+Library           Selenium2Library
+Library           Myimport
+Resource          MyResource.txt
+
+*** Test Cases ***
+浏览器css定位
+    Open Browser    https://www.baidu.com    firefox
+    Set Browser Implicit Wait    5
+    ${s}    Get Webelements    css=.mnav
+    Click Element    ${s[0]}
+    ${title}    Get Title
+    log    ${title}
+    go back
+    sleep    5
+    Close Browser
+
+百度搜索
+    搜索测试    啄木鸟儿
+    搜索测试    selenium
+    搜索测试    appium
+
+*** Keywords ***
