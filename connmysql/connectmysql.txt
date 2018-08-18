@@ -1,0 +1,10 @@
+*** Settings ***
+Library           Selenium2Library
+Library           DatabaseLibrary
+
+*** Test Cases ***
+连接mysql数据库
+    connect to database using custom params    pymysql    host="172.16.255.47",port=3306,user="root",passwd="sanqimei_test",db="sanqimei_user"
+    @{table}    query    select * from user where phone="15088307391"
+    log many    @{table}
+    disconnect from database
